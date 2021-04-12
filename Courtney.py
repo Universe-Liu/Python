@@ -1,5 +1,5 @@
 import math
-from sympy import *
+
 from scipy import special
 from scipy.optimize import fsolve
 c=3*math.pow(10,8)
@@ -27,7 +27,7 @@ def get_u(v):
         u=i[0]
         return u*special.j0(u)*special.k1(v)+v*special.k0(v)*special.j1(u)
     u=fsolve(fun_u,[3],v)[0]
-    print(u,v)
+    #print(u,v)
     return u
 
 def get_Xi(d,L,f0):
@@ -44,7 +44,9 @@ def get_W(u,v):
     w1=special.j1(u)/special.k1(v)
     w2=special.k0(v)*special.kn(2,v)-special.k1(v)*special.k1(v)
     w3=special.j1(u)*special.j1(u)-special.j0(u)*special.jv(2,u)
+    
     return math.pow(w1,2)*w2/w3
+
 
 def get_B(L,f0,xi,W,rs):
     b1=math.pow(c/(f0*2*L),3)
@@ -65,13 +67,13 @@ def get_delta(d,L,f0,xi,Q):
     delta1=get_A(xi,W)/Q
     delta2=get_B(L,f0,xi,W,rs)/math.sqrt(get_sigma(f0,rs))
     return delta1-delta2
-
+'''
 for i in range(len(ll)):
     xi=get_Xi(ll[i]*10**(-3),h[i]*10**(-3),f[i]*10**9)
     delta=get_delta(ll[i]*10**(-3),h[i]*10**(-3),f[i]*10**9,xi,Qu[i])
-    print(li[i],xi,delta)
-
+    print('%s %f %.3e' % (li[i],xi,delta))
+'''
 for i in range(len(ll2)):
     xi=get_Xi(ll2[i]*10**(-3),h2[i]*10**(-3),f2[i]*10**9)
-    #delta=get_delta(ll[i]*10**(-3),h[i]*10**(-3),f[i]*10**9,xi,Qu[i])
+    delta=get_delta(ll[i]*10**(-3),h[i]*10**(-3),f[i]*10**9,xi,Qu[i])
     print(xi)
