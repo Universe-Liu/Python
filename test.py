@@ -1,19 +1,6 @@
-def getXORSum(arr1, arr2):
-    andl=[]
-    for i in range(len(arr1)):
-        x=arr1[i]
-        for j in range(len(arr2)):
-            y=arr2[j]
-            andl.append(x&y)
-        
-    if len(andl)==1:
-        return andl[0]
-    else:
-        res=andl[0]
-        for i in range(1,len(andl)):
-            res=res^andl[i]
-    return res
-
-arr1 = [12]
-arr2 = [4]
-print(getXORSum(arr1,arr2))
+a=[0.0005961299999999999,0.000596102,0.00059524]
+b=[10.038,10.043,10.131,10.226]
+k=(a[1]-a[0])/(b[1]-b[0])
+def f(x):
+    return (x-b[0])*k+a[0]
+print(f(b[2])-a[2])

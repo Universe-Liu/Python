@@ -21,7 +21,7 @@ print('p4 is :\n',p4)
 plot10038 = plt.plot(h, k10038, 'r',label='10038')
 plot10043 = plt.plot(h, k10043, 'black',label='10043')
 plot10131 = plt.plot(h, k10131, 'b',label='10131')
-#plot10226 = plt.plot(h, k10226, 'b',label='10226')
+plot10226 = plt.plot(h, k10226, 'y',label='10226')
 plt.xlabel('x')
 plt.ylabel('y')
 plt.legend(loc=4) #指定legend的位置右下角

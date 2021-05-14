@@ -48,26 +48,45 @@ while(abs(f-fs)>0.01):
     f=f2(thickness,start)
 print(start)
 '''
-
+X123=[]
+Y123=[]
 def fin(k,p):
     b=[]
     t=[]
-    with open('yanzheng.txt','a') as f:
+    v=[]
+    with open('yz.txt','a') as f:
         f.write(str(p)+'\n')
     for i in range(len(k)):
+        tmp=[]
         for j in range(len(k[0])):
             u=(Y1[i]-1)*k[i][j]*X2[j]/1000
+            tmp.append(u)
             #u=u*f0[p-1]
-            u=(1-u)*f0[p-1]
+            #u=(1-u)*f0[p-1]
             t.append(str(u)+'\t')
         b.append(t)
-        with open('yanzheng.txt','a') as f:
+        v.append(tmp)
+        
+        with open('yz.txt','a') as f:
             f.writelines(t)
             f.write('\n')
         t=[]
+    Y123.append(v)
+        
+def f(x,xo,xl,yo,yl):
+    k=(yo-yl)/(xo-xl)
     
+    return (x-xo)*k+yo    
+
+
 
 fin(k1,1)
 fin(k2,2)
 fin(k3,3)
-fin(k4,4)
+print(Y123)
+
+qqw=[10.038,10.043,10.131]
+for i in range(len(k1)):
+    for j in range(len(k1[0])):
+        print(f(qqw[2],qqw[0],qqw[1],Y123[0][i][j],Y123[1][i][j])-Y123[2][i][j])
+#fin(k4,4)
